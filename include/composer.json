@@ -1,0 +1,11 @@
+{
+    "name": "lenny/include",
+    "autoload": {
+        "psr-4": {
+            "Lenny\\Include\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.10"
+    }
+}

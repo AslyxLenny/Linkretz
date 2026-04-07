@@ -1,0 +1,395 @@
+body{
+	font-family: Calibri, serif;
+	font-size: 18px;
+	margin: 0px;
+	padding: 0px;
+}
+h2{
+	margin-top: 20px;
+ 	font-weight: normal;
+ 	text-align: center;
+	color:blue;
+}
+
+header{
+	height: 80px;
+	display:flex; 
+	flex-direction: column; 
+	}
+header h1 {
+	margin:auto; 
+	
+	font-size: 40px;
+ 	font-weight: normal;
+ 	text-align: center;
+}
+footer{
+	height: 50px;
+	padding-top: 1px;
+	padding-bottom: 20px;
+	text-align: center;
+	background-color: #C5C5C5;
+	border-top: 2px solid #AAA;
+}
+
+body {
+	margin-bottom:auto;
+}
+nav{
+	width: 100%;
+	background-color: #424558;
+}	
+nav ul{
+	margin: 0px;
+	padding: 0px;
+}
+nav li{
+	list-style-type: none;
+	float: left;
+	
+}
+nav a{
+	display: inline-block;
+	text-decoration: none;
+	padding: 20px 30px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+.button-container {
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+	margin:auto;
+}
+
+.acc:hover, .acc{
+	border-top: 5px solid #4C8;
+	background-color: rgba(64, 200, 130, 0.15);
+}
+.tour:hover, .tour{
+	border-top: 5px solid #f1dc4f;
+	background-color: rgba(241, 211, 79, 0.15);;
+}
+.cont:hover, .cont{
+	border-top: 5px solid #3bbdfa;
+	background-color: rgba(67, 135, 177, 0.15);
+}
+
+.com:hover, .com{
+	border-top: 5px solid #0070BB;
+	background-color: rgba(000, 112, 192, 0.15);
+}
+.conx:hover, .conx{
+	border-top: 5px solid #e44d26;
+	background-color: rgba(228, 77, 38 ,0.15);
+}
+
+.mdp:hover, .mdp{
+	border-top: 5px solid #6700bb;
+	background-color: rgba(131, 0, 192, 0.15);
+}
+
+nav li:hover a{
+	padding: 15px 30px 20px 30px;
+}
+section{
+	width: 100%;
+
+	padding-bottom: 10px;	
+	display: flex ; 
+	flex-direction: column; 
+}
+.accueiltop {
+	border-top: 5px solid #4C8;
+}
+.accueil h2 {
+	padding: 10px;
+	margin:0%; /* pour centrer le titre */
+	color: blue;
+	letter-spacing: 1px;
+}
+.centre h1{
+	margin: auto;
+}
+.table{
+	display:table;
+	margin: 0 auto;
+}
+.sec{
+	margin: 0px 10%;
+}
+p{
+  padding: 5px 20px;
+}
+
+table {
+	margin:auto;
+	border-collapse: collapse;
+	border: 2px solid rgb(200,200,200);
+	letter-spacing: 1px;
+}
+
+td, th {
+  border: 1px solid rgb(190,190,190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: rgb(255, 255, 255);
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245,245,245);
+}
+
+.sec::after, .exp::after, .reco::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.orange{
+	border-top: 5px solid #e47d26;
+	background-color: white;
+	margin-bottom: 0px;
+}
+
+.rose{
+	border-top: 5px solid #e44d96;
+	background-color: white;
+	margin-bottom: 0px;
+}
+
+.violet{
+	border-top: 5px solid #6700bb;
+	background-color: white;
+	margin-bottom: 0px;
+}
+
+.vert{
+	border-top: 5px solid #4C8;
+	background-color: white;
+}
+
+.cyan{
+	border-top: 5px solid #3bbdfa;
+	background-color: white;
+}
+
+.bleu{
+	border-top: 5px solid #0070BB;
+	background-color: white;
+}
+
+.jaune{
+	border-top: 5px solid #f1dc4f;
+	background-color: white;
+}
+
+.rouge{
+	border-top: 5px solid #e44d26;
+	background-color: white;
+}
+
+@media screen and (max-width:780px){
+	header{
+		height: 50px;	
+	}
+	h1{
+		font-size: 28px;
+		margin: 0px 0px 0px 0px;
+	}
+	nav li{
+		list-style-type: none;
+		float: left;
+		width:120px;
+	}
+	nav li a{
+		font-size: 12px;
+		padding:10px;
+	}
+	nav li:hover a{
+		padding: 5px 10px 10px 10px;
+	}
+}
+
+#container {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 5%;
+}
+  
+/* formulaire*/
+form {
+	/*width:100%;*/
+	padding: 30px;
+	border: 1px solid #f1f1f1;
+	background: #fff;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+  
+/* titre h1 dans un container */
+#container h1 {
+	width: 38%;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+  
+/* composant input text ou input mail ou input text ou input password */
+input[type='text'],
+input[type='mail'],
+input[type='tel'],
+input[type='password'],
+textarea {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	resize: vertical;
+}
+  
+/* composant input date ou select */
+input[type='date'],
+select {
+	padding: 12px 2px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+  
+/* composant input checkbox */
+input[type='checkbox'] {
+	padding: 12px 15px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+/* label */
+label {
+	color: blue;
+}
+/* pour avoir un label et des radio bouton sur la même ligne */
+.radio-group {
+	width: 100%;
+	padding: 10px 0px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+/* pour avoir un label et un champ sur la même ligne */
+.form-group {
+	width: 100%;
+	padding: 10px 0px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+  
+/* bouton de type submit */
+input[type='submit'] {
+	background-color: #53af57;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+  
+/* changement d'aspect si la souris passe sur un bouton de type submit */
+input[type='submit']:hover {
+	background-color: white;
+	color: #53af57;
+	border: 1px solid #53af57;
+}
+
+.pays{
+	font-family: Calibri, serif;
+}
+
+/* Sélecteur de langue */
+.lang-selector {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+.lang-current {
+	background: none;
+	border: 2px solid #424558;
+	border-radius: 8px;
+	padding: 5px 12px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 16px;
+	transition: background 0.2s, border-color 0.2s;
+}
+
+.lang-current:hover {
+	background: rgba(66, 69, 88, 0.1);
+	border-color: #3bbdfa;
+}
+
+.lang-arrow {
+	font-size: 12px;
+	color: #424558;
+}
+
+.lang-dropdown {
+	display: none;
+	position: absolute;
+	top: calc(100% + 4px);
+	right: 0;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+	z-index: 1000;
+	min-width: 160px;
+	overflow: hidden;
+}
+
+.lang-dropdown.open {
+	display: flex;
+	flex-direction: column;
+}
+
+.lang-option {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 16px;
+	border: none;
+	background: none;
+	cursor: pointer;
+	font-size: 15px;
+	font-family: Calibri, serif;
+	color: #333;
+	text-align: left;
+	width: 100%;
+	transition: background 0.15s;
+}
+
+.lang-option:hover {
+	background: rgba(59, 189, 250, 0.12);
+}
+
+.lang-option.active {
+	background: rgba(66, 69, 88, 0.08);
+	font-weight: bold;
+}
+
+.lang-option .fi {
+	font-size: 20px;
+}
