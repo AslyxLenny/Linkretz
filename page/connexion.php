@@ -1,5 +1,8 @@
 ﻿<?php
 // démarrage de la session
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.cookie_samesite', 'Strict');
 session_start();
 
 // Redirection selon le profil si l'utilisateur est déjà connecté
@@ -60,8 +63,8 @@ if (count($_POST) > 0) {
 
 				// Appel de la fonction password_verify
 				if (password_verify($motdepasse, $hash) == true) {
-					// On démarre la session
-					session_start();
+					// Régénération de l'ID de session pour éviter la fixation de session
+					session_regenerate_id(true);
 					// On crée la variable de session 'profil_util' qui contient le profil de l'utilisateur
 					$_SESSION['id'] = $enreg->id;
 					$_SESSION['profil_utilisateur'] = $code_profil; // $code_profil est récupéré depuis la base de données
@@ -122,7 +125,7 @@ if (count($_POST) > 0) {
 
 				<input type="submit" name="valider" value="Connexion">
 			</form>
-			<?php if (isset($msg)) echo $msg; ?>
+			<?php if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); ?>
 			</div>
 		</section>
 		<?php 

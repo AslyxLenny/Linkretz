@@ -29,21 +29,21 @@
             //l'attribut value
             foreach ($lesEnregs as $enreg) {
                 if (isset($theme) && $theme == $enreg->id) {
-                    echo "<option selected value='$enreg->id'>$enreg->libelle</option>";
+                    echo "<option selected value='" . htmlspecialchars($enreg->id, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8') . "</option>";
                 } else {
-                    echo "<option value='$enreg->id'>$enreg->libelle</option>";
+                    echo "<option value='" . htmlspecialchars($enreg->id, ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8') . "</option>";
                 }
             }
         }
         ?>
     </select>
-    <?php if(isset($msgErrSpe) && !empty(trim($msgErrSpe))) echo "<p class='msg_erreur'>",$msgErrSpe,"</p>"; ?>   
+    <?php if(isset($msgErrSpe) && !empty(trim($msgErrSpe))) echo "<p class='msg_erreur'>",htmlspecialchars($msgErrSpe, ENT_QUOTES, 'UTF-8'),"</p>"; ?>   
 </div>
 <label for="intitule" id="labelIntitule">Intitulé : </label>
-<input type="text" name="intitule" id="intitule" placeholder="Saisissez l'intitulé" value="<?php if (isset($intitule) && !empty(trim($intitule))) echo $intitule; ?>" required />
+<input type="text" name="intitule" id="intitule" placeholder="Saisissez l'intitulé" value="<?php if (isset($intitule) && !empty(trim($intitule))) echo htmlspecialchars($intitule, ENT_QUOTES, 'UTF-8'); ?>" required />
 <label for="duree" id="labelDuree">Durée (en jour) : </label>
-<input type="text" name="duree" id="duree" placeholder="Saisissez la durée" value="<?php if (isset($duree) && !empty(trim($duree))) echo $duree; ?>" required />
+<input type="text" name="duree" id="duree" placeholder="Saisissez la durée" value="<?php if (isset($duree) && !empty(trim($duree))) echo htmlspecialchars($duree, ENT_QUOTES, 'UTF-8'); ?>" required />
 <label for="prix" id="labelPrix">Prix (en euro):</label>
-<input type="text" name="prix" id="prix" placeholder="Saisissez le prix" value="<?php if (isset($prix) && !empty(trim($prix))) echo $prix; ?>" required />
+<input type="text" name="prix" id="prix" placeholder="Saisissez le prix" value="<?php if (isset($prix) && !empty(trim($prix))) echo htmlspecialchars($prix, ENT_QUOTES, 'UTF-8'); ?>" required />
         
 <input type="submit" name="valider" id="valider" value="Envoyer" />

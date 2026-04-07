@@ -39,7 +39,7 @@
 							</tr>";
 						foreach ($lesEnregs as $enreg) {
 							echo "
-							<tr><td>$enreg->nom</td> <td>$enreg->prenom</td> <td>$enreg->telephone</td></tr>";
+							<tr><td>" . htmlspecialchars($enreg->nom, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->prenom, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->telephone, ENT_QUOTES, 'UTF-8') . "</td></tr>";
 						}
 						echo"</table>";
 					}

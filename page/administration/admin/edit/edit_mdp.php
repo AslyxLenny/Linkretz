@@ -38,7 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "Aucune donnée n'a été soumise";
     } else {
 
-        extract($_POST);
+        $currentpassword = isset($_POST['currentpassword']) ? $_POST['currentpassword'] : '';
+        $newpassword = isset($_POST['newpassword']) ? $_POST['newpassword'] : '';
+        $checknewpassword = isset($_POST['checknewpassword']) ? $_POST['checknewpassword'] : '';
         
         // Déclaration de la constante
         $regexMdp = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/";
@@ -118,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			<div class="sec">
 				<div id="container">
     			<form  method="POST" action="" name="editmdp" id="editmdp">
-                    <input type="hidden" name="id" id="id" value="<?php echo $_SESSION['id']; ?>"/>
+                    <input type="hidden" name="id" id="id" value="<?php echo intval($_SESSION['id']); ?>"/>
 
                     <label for="currentpassword">Mot de passe actuel</label>
                     <input type="password" name="currentpassword" id="currentpassword" placeholder="Saisissez votre mot de passe actuel."/>
@@ -133,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				</form>
 				<div id="message">
 					<?php 
-						if (isset($msg)) echo $msg; 
+						if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); 
 					?>
 				</div>
 			</div>

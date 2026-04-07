@@ -42,10 +42,10 @@ include "../../../include/sec_employ.php";
                             <th>Téléphone</th>
                             </tr>";
                         foreach ($lesEnregs as $enreg) {
-                            $libFr = htmlspecialchars($enreg->libelle);
-                            $libEn = htmlspecialchars($enreg->libelle_en);
+                            $libFr = htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8');
+                            $libEn = htmlspecialchars($enreg->libelle_en, ENT_QUOTES, 'UTF-8');
                             echo "
-                            <tr><td>$enreg->nom</td> <td>$enreg->prenom</td> <td data-fr=\"$libFr\" data-en=\"$libEn\">$enreg->libelle</td> <td>$enreg->telephone</td></tr>";
+                            <tr><td>" . htmlspecialchars($enreg->nom, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->prenom, ENT_QUOTES, 'UTF-8') . "</td> <td data-fr=\"$libFr\" data-en=\"$libEn\">" . htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->telephone, ENT_QUOTES, 'UTF-8') . "</td></tr>";
                         }
                         echo"</table>";
                     }

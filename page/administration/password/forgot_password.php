@@ -6,7 +6,8 @@ require '../../../include/vendor/autoload.php';
 include "../../../include/connexion_bd.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    extract($_POST);
+    $id = isset($_POST['id']) ? trim($_POST['id']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
     
     // Vérifier si l'id existe dans la base de données
     $lesEnregs = $bdd->prepare("SELECT id FROM linkretz_viator_employe WHERE compte = :id");
@@ -41,14 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lesEnregs->execute();
 
         // Créer l'URL de réinitialisation
-        $resetUrl = "http://g8.stsjr.fr/viator/linkretz/page/administration/password/reset_password.php?token=$token";
+        $resetUrl = $_ENV['APP_URL'] . "/page/administration/password/reset_password.php?token=$token";
 
         // Paramètres SMTP
-        $host = 'mail.stsjr.fr';
-        $port = 465;                    // 465 pour SMTPS, 587 pour STARTTLS
-        $username = 'lenny.viator@stsjr.fr';
-        $password = 'Pmloikju00&';
-        $encryption = 'ssl';
+        $host = $_ENV['SMTP_HOST'];
+        $port = $_ENV['SMTP_PORT'];
+        $username = $_ENV['SMTP_USER'];
+        $password = $_ENV['SMTP_PASS'];
+        $encryption = $_ENV['SMTP_ENCRYPTION'];
 
         // Destinataire et message
         $to= $email;
@@ -77,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->Port       = $port;
 
             // Expéditeur et destinataire
-            $mail->setFrom('lenny.viator@stsjr.fr', 'Linkretz');
+            $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
             $mail->addAddress($to);
 
             // Contenu
@@ -126,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				</form>
 				<div id="message">
 				<?php 
-					if (isset($msg)) echo $msg; 
+					if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); 
 				?>
 				</div>
 			</div>

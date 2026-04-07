@@ -9,7 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "Aucune donnée n'a été soumise";
     } else {
 
-        extract($_POST);
+        $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+        $immatriculation = isset($_POST['immatriculation']) ? trim($_POST['immatriculation']) : '';
+        $nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+        $nom_en = isset($_POST['nom_en']) ? trim($_POST['nom_en']) : '';
+        $description = isset($_POST['description']) ? trim($_POST['description']) : '';
+        $description_en = isset($_POST['description_en']) ? trim($_POST['description_en']) : '';
+        $specialite = isset($_POST['specialite']) ? $_POST['specialite'] : '0';
         
         //controle des valeurs saisies
         if (empty(trim($immatriculation))) {
@@ -87,8 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php 
 			include "../../../../include/header.html"; 
             include "../../../../include/menu_admin.php";
-			if(isset($_GET['id]']) == true && $_GET['id'] > 0) {
-				extract($_GET);
+			if(isset($_GET['id']) && intval($_GET['id']) > 0) {
+				$id = intval($_GET['id']);
 			}
 			include "../../../../include/connexion_bd.php"; 
 			try {
@@ -124,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				</form>
 				<div id="message">
 					<?php 
-						if (isset($msg)) echo $msg; 
+						if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); 
 					?>
 				</div>
 			</div>

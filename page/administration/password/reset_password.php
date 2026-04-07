@@ -3,7 +3,10 @@ session_start();
 include "../../../include/connexion_bd.php";
 // Vérifier si un token est présent dans l'URL
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    extract($_POST);
+    $token = isset($_POST['token']) ? $_POST['token'] : '';
+    $newpassword = isset($_POST['newpassword']) ? $_POST['newpassword'] : '';
+    $checknewpassword = isset($_POST['checknewpassword']) ? $_POST['checknewpassword'] : '';
+    $premier_connexion = isset($_POST['premier_connexion']) ? $_POST['premier_connexion'] : 1;
     
     // Vérification que les mots de passe correspondent
     if ($newpassword != $checknewpassword) {

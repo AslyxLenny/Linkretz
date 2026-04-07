@@ -44,10 +44,10 @@ include "../../../include/sec_employ.php";
                             <th>Besoin</th>
                             </tr>";
                         foreach ($lesEnregs as $enreg) {
-                            $paysFr = htmlspecialchars($enreg->libelle);
-                            $paysEn = htmlspecialchars($enreg->libelle_en);
+                            $paysFr = htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8');
+                            $paysEn = htmlspecialchars($enreg->libelle_en, ENT_QUOTES, 'UTF-8');
                             echo "
-                            <tr><td>$enreg->nom_prenom</td> <td>$enreg->email</td> <td>$enreg->telephone</td> <td data-fr=\"$enreg->deja_contacte\" data-en=\"$enreg->deja_contacte\">$enreg->deja_contacte</td> <td data-fr=\"$paysFr\" data-en=\"$paysEn\">$enreg->libelle</td> <td>$enreg->besoin</td></tr>";
+                            <tr><td>" . htmlspecialchars($enreg->nom_prenom, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->email, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->telephone, ENT_QUOTES, 'UTF-8') . "</td> <td data-fr=\"" . htmlspecialchars($enreg->deja_contacte, ENT_QUOTES, 'UTF-8') . "\" data-en=\"" . htmlspecialchars($enreg->deja_contacte, ENT_QUOTES, 'UTF-8') . "\">" . htmlspecialchars($enreg->deja_contacte, ENT_QUOTES, 'UTF-8') . "</td> <td data-fr=\"$paysFr\" data-en=\"$paysEn\">" . htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->besoin, ENT_QUOTES, 'UTF-8') . "</td></tr>";
                         }
                         echo"</table>";
                     }

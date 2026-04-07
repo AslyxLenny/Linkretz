@@ -20,7 +20,7 @@ $fonction = $_SESSION['fonction'];
 			include "../../../../include/menu_admin.php"; 
 		?>
 		<section class="accueiltop">
-			<h2><?php echo "Bienvenue dans l'espace administration ". $prenom_nom . "<br> Vous êtes " . $fonction . "."?> </h2>
+			<h2><?php echo "Bienvenue dans l'espace administration ". htmlspecialchars($prenom_nom, ENT_QUOTES, 'UTF-8') . "<br> Vous êtes " . htmlspecialchars($fonction, ENT_QUOTES, 'UTF-8') . "."?> </h2>
 		</section>
 		<?php 
 			include "../../../../include/footer.html"; 

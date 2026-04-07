@@ -62,7 +62,7 @@
 						</tr>";
 					foreach ($lesEnregs as $enreg) {
 						echo "
-						<tr><td data-fr=\"".htmlspecialchars($enreg->jour)."\" data-en=\"".htmlspecialchars($enreg->day)."\">$enreg->jour</td> <td data-fr=\"".htmlspecialchars($enreg->horaire_matin)."\" data-en=\"".htmlspecialchars($enreg->morning_schedule)."\">$enreg->horaire_matin</td> <td data-fr=\"".htmlspecialchars($enreg->horaire_aprem)."\" data-en=\"".htmlspecialchars($enreg->afternoon_schedule)."\">$enreg->horaire_aprem</td></tr>";
+						<tr><td data-fr=\"".htmlspecialchars($enreg->jour, ENT_QUOTES, 'UTF-8')."\" data-en=\"".htmlspecialchars($enreg->day, ENT_QUOTES, 'UTF-8')."\">".htmlspecialchars($enreg->jour, ENT_QUOTES, 'UTF-8')."</td> <td data-fr=\"".htmlspecialchars($enreg->horaire_matin, ENT_QUOTES, 'UTF-8')."\" data-en=\"".htmlspecialchars($enreg->morning_schedule, ENT_QUOTES, 'UTF-8')."\">".htmlspecialchars($enreg->horaire_matin, ENT_QUOTES, 'UTF-8')."</td> <td data-fr=\"".htmlspecialchars($enreg->horaire_aprem, ENT_QUOTES, 'UTF-8')."\" data-en=\"".htmlspecialchars($enreg->afternoon_schedule, ENT_QUOTES, 'UTF-8')."\">".htmlspecialchars($enreg->horaire_aprem, ENT_QUOTES, 'UTF-8')."</td></tr>";
 					}
 					echo"</table>";
 				}

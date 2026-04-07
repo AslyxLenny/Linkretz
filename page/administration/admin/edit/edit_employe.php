@@ -11,7 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "Aucune donnée n'a été soumise";
     } else {
 
-        extract($_POST);
+        $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+        $nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+        $prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : '';
+        $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : '';
+        $fonction = isset($_POST['fonction']) ? $_POST['fonction'] : '0';
+        $profil = isset($_POST['profil']) ? $_POST['profil'] : '0';
+        $compte = isset($_POST['compte']) ? trim($_POST['compte']) : '';
+        $mot_de_passe = isset($_POST['hash']) ? $_POST['hash'] : '';
         
         // Déclaration de la constante
         $regexTelephone = "/^\+[0-9]{1,4}[0-9]{4,14}$/";
@@ -96,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php 
 			include "../../../../include/header.html"; 
             include "../../../../include/menu_admin.php";
-			if(isset($_GET['id]']) == true && $_GET['id'] > 0) {
-				extract($_GET);
+			if(isset($_GET['id']) && intval($_GET['id']) > 0) {
+				$id = intval($_GET['id']);
 			}
 			include "../../../../include/connexion_bd.php"; 
 			try {
@@ -130,13 +137,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 						include "../../../../include/employe_composant.php"
 					?>
 					<label for="mot_de_passe"></label>
-        			<input type="hidden" name="hash" id="hash" value="<?php if(isset($mot_de_passe)) echo $mot_de_passe;?>"/>
-                    <input type="hidden" name="id" id="id" value="<?php if(isset($_GET['id'])) echo $_GET['id']; ?>"/>
+        			<input type="hidden" name="hash" id="hash" value="<?php if(isset($mot_de_passe)) echo htmlspecialchars($mot_de_passe, ENT_QUOTES, 'UTF-8');?>"/>
+                    <input type="hidden" name="id" id="id" value="<?php if(isset($_GET['id'])) echo intval($_GET['id']); ?>"/>
 				<button type="submit" id=valider style="background-color: #5cb85c; color: white; width: 100%; padding: 10px; border: none;">Modifier l'employé</button>
 				</form>
 				<div id="message">
 					<?php 
-						if (isset($msg)) echo $msg; 
+						if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); 
 					?>
 				</div>
 			</div>

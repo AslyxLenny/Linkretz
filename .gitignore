@@ -1,0 +1,22 @@
+# Environnement
+.env
+
+# Dépendances Composer
+/include/vendor/
+
+# IDE / Éditeur
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+
+# SQL dump (données sensibles)
+*.sql

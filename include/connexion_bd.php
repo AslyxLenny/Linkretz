@@ -1,8 +1,13 @@
 <?php
-$hote = '91.216.107.183'; // nom ou adresse ip du serveur hébergeant le SGBD MySQL
-$utilisateur = 'stsjr1615583_12elatn'; // compte de connexion utilisé par l'application
-$mdp = '7R7pq3fn5y@'; // mot de passe du compte de connexion
-$nombdd = 'stsjr1615583_12elatn'; // nom de la base de données
+require_once __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+$hote = $_ENV['DB_HOST'];
+$utilisateur = $_ENV['DB_USER'];
+$mdp = $_ENV['DB_PASS'];
+$nombdd = $_ENV['DB_NAME'];
 
 try {
     // création d'un objet qui sera utilisé pour travailler avec la base de données

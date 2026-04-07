@@ -10,9 +10,10 @@ if (count($_POST) > 0) {
     //a été réalisé dans la base de données 
     $msg = "";
 
-    //appel de la fonction extract qui va créer automatiquement les variables dont les noms
-    //sont les index de $_POST et leur affecte la valeur associée
-    extract($_POST);
+    $theme = isset($_POST['theme']) ? $_POST['theme'] : '0';
+    $intitule = isset($_POST['intitule']) ? trim($_POST['intitule']) : '';
+    $duree = isset($_POST['duree']) ? trim($_POST['duree']) : '';
+    $prix = isset($_POST['prix']) ? trim($_POST['prix']) : '';
 
     $msgErrSpe = "";
     if ($theme == 0) {
@@ -76,12 +77,12 @@ if (count($_POST) > 0) {
     ?>
     <section class="form_ajout_promotion">
         <h2>Ajout d'une promotion</h2>
-        <?php if(isset($msg) && empty(trim($msg)) == false) echo "<p class='messageBD'>",$msg,"<p>"; ?>
+        <?php if(isset($msg) && empty(trim($msg)) == false) echo "<p class='messageBD'>",htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'),"<p>"; ?>
         <div id="container">
             <form method="post">
                 <?php include "../../../../include/promotion_composant_graph.php"; ?>
             </form>
-            <p id="msgConfirm"><?php if (isset($msgErr) && !empty(trim($msgErr))) echo $msgErr; ?></p>
+            <p id="msgConfirm"><?php if (isset($msgErr) && !empty(trim($msgErr))) echo htmlspecialchars($msgErr, ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
     </section>
     <?php include "../../../../include/footer.html" ?>

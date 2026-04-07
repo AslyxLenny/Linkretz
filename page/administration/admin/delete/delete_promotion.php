@@ -5,11 +5,10 @@ include "../../../../include/sec_admin.php";
 //on initialise la variable $msg qui contiendra le message à afficher après la suppression
 $msg = "";
 
-//on effectue un extract pour le GET
-extract($_GET);
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 //est-ce que l'id de l'employé à supprimer à été passé en GET
-if (isset($id) == true && $id > 0) {
+if ($id > 0) {
     //connexion à la base de données
     include "../../../../include/connexion_bd.php";
 

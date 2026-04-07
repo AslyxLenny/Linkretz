@@ -9,7 +9,20 @@ $msg = "";
         $msg = "Aucune donnée n'a été transmise : le tableau $_POST est vide";
     } else {
 
-        extract($_POST);
+        $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
+        $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
+        $email = isset($_POST['email']) ? $_POST['email'] : '';
+        $telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
+        $deja_contacte = isset($_POST['deja_contacte']) ? $_POST['deja_contacte'] : 'non';
+        $code_pays = isset($_POST['code_pays']) ? $_POST['code_pays'] : '';
+        $besoin = isset($_POST['besoin']) ? $_POST['besoin'] : '';
+
+        // Nettoyage des entrées
+        $nom = trim($nom);
+        $prenom = trim($prenom);
+        $email = trim($email);
+        $telephone = trim($telephone);
+        $besoin = trim($besoin);
 
         // Déclaration des constantes
         $regexMail = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
@@ -104,7 +117,7 @@ $msg = "";
                     <input type="mail" name="email" id="email" placeholder="Veuillez saisir votre e-mail." required autofocus/>
                         
                     <label for="telephone">Téléphone</label>
-                    <input type="tel" name="telephone" id="telephone" placeholder="Saisissez le numéro de téléphone de l'employé. (Format Internationnal sans espaces)" pattern="^\+[0-9]{1,4}[0-9]{4,14}$" title="Format: +indicatif suivi des numéros (ex: +33 6 12 34 56 78)"  required autofocus value="<?php if(isset($telephone)) echo $telephone;?>"/>
+                    <input type="tel" name="telephone" id="telephone" placeholder="Saisissez le numéro de téléphone de l'employé. (Format Internationnal sans espaces)" pattern="^\+[0-9]{1,4}[0-9]{4,14}$" title="Format: +indicatif suivi des numéros (ex: +33 6 12 34 56 78)"  required autofocus value="<?php if(isset($telephone)) echo htmlspecialchars($telephone, ENT_QUOTES, 'UTF-8');?>"/>
 
                     <div class="form-group">
                         <label>Est-ce que vous nous avez déjà contacté ?</label>
@@ -130,7 +143,7 @@ $msg = "";
                 </form>
                 <div id="message">
                     <?php 
-                        if (isset($msg)) echo $msg; 
+                        if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); 
                     ?>
                 </div>
             </div>

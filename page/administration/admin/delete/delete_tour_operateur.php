@@ -6,7 +6,7 @@ include "../../../../include/sec_admin.php";
 $msg = "";
 
 // Est-ce que l'id de du tour-opérateur à supprimer a été passé en GET ?
-if (isset($_GET['id']) == true && $_GET['id'] > 0) {
+if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     // connexion à la base de données
     include "../../../../include/connexion_bd.php";
 

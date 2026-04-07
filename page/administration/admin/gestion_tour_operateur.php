@@ -22,7 +22,7 @@ $fonction = $_SESSION['fonction'];
         ?>
         <section class="jaune">
 			<h2>Gestion des tour-opérateurs.<br>
-            <?php echo ("Personne connectée : " . $prenom_nom . " (" . $fonction .")"); ?> </h2>
+            <?php echo ("Personne connectée : " . htmlspecialchars($prenom_nom, ENT_QUOTES, 'UTF-8') . " (" . htmlspecialchars($fonction, ENT_QUOTES, 'UTF-8') .")"); ?> </h2>
 			<div class="button-container">
                 <a href='./add/add_tour_operateur.php'>
                     <input type='button' name='AddTour' value='Ajouter un tour-opérateur'/>
@@ -53,16 +53,16 @@ $fonction = $_SESSION['fonction'];
                             <th>Supprimer</th>
                             </tr>";
                         foreach ($lesEnregs as $enreg) {
-                            $libFr = htmlspecialchars($enreg->libelle);
-                            $libEn = htmlspecialchars($enreg->libelle_en);
+                            $libFr = htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8');
+                            $libEn = htmlspecialchars($enreg->libelle_en, ENT_QUOTES, 'UTF-8');
                             echo "
                             <tr>
-                            <td>$enreg->num_immat</td>
-                            <td>$enreg->nom</td>
-                            <td>$enreg->nom_en</td>
-                            <td data-fr=\"$libFr\" data-en=\"$libEn\">$enreg->libelle</td>
-                            <td><a href='./edit/edit_tour_operateur.php?id=$enreg->id'><input type='button' name='EditTourOperateur' value='Modifier'/></a></td> 
-                            <td><a href='./delete/delete_tour_operateur.php?id=$enreg->id' class='del'><input type='button' name='SupprTourOperateur' value='Supprimer'/>
+                            <td>" . htmlspecialchars($enreg->num_immat, ENT_QUOTES, 'UTF-8') . "</td>
+                            <td>" . htmlspecialchars($enreg->nom, ENT_QUOTES, 'UTF-8') . "</td>
+                            <td>" . htmlspecialchars($enreg->nom_en, ENT_QUOTES, 'UTF-8') . "</td>
+                            <td data-fr=\"$libFr\" data-en=\"$libEn\">" . htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8') . "</td>
+                            <td><a href='./edit/edit_tour_operateur.php?id=" . intval($enreg->id) . "'><input type='button' name='EditTourOperateur' value='Modifier'/></a></td> 
+                            <td><a href='./delete/delete_tour_operateur.php?id=" . intval($enreg->id) . "' class='del'><input type='button' name='SupprTourOperateur' value='Supprimer'/>
                             </a></td></tr>";
                         }
                         echo"</table>";

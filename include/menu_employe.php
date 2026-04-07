@@ -13,7 +13,7 @@
 			</li>
 			<li class="mdp">
                 <?php 
-				$id = $_SESSION['id'];
+				$id = intval($_SESSION['id']);
 				echo"<a href='/viator/linkretz/page/administration/admin/edit/edit_mdp.php?id=$id'>Modification du mot de passe</a>"
 				?>
             </li>

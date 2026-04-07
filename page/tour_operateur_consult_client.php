@@ -33,13 +33,13 @@
 				} else {
 					//on lit le tableau retourné et pour chaque enregistrement, on affiche le nom et la description
 					foreach ($lesEnregs as $enreg) {
-						$nomFr = htmlspecialchars($enreg->nom);
-						$nomEn = htmlspecialchars($enreg->nom_en);
-						$descFr = htmlspecialchars($enreg->description);
-						$descEn = htmlspecialchars($enreg->description_en);
-						$libFr = htmlspecialchars($enreg->libelle);
-						$libEn = htmlspecialchars($enreg->libelle_en);
-						echo "<strong data-fr=\"$nomFr\" data-en=\"$nomEn\">$enreg->nom</strong> / <span data-fr=\"$libFr\" data-en=\"$libEn\">$enreg->libelle</span><br><span data-fr=\"$descFr\" data-en=\"$descEn\">$enreg->description</span><br><br>";
+						$nomFr = htmlspecialchars($enreg->nom, ENT_QUOTES, 'UTF-8');
+						$nomEn = htmlspecialchars($enreg->nom_en, ENT_QUOTES, 'UTF-8');
+						$descFr = htmlspecialchars($enreg->description, ENT_QUOTES, 'UTF-8');
+						$descEn = htmlspecialchars($enreg->description_en, ENT_QUOTES, 'UTF-8');
+						$libFr = htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8');
+						$libEn = htmlspecialchars($enreg->libelle_en, ENT_QUOTES, 'UTF-8');
+						echo "<strong data-fr=\"$nomFr\" data-en=\"$nomEn\">$nomFr</strong> / <span data-fr=\"$libFr\" data-en=\"$libEn\">$libFr</span><br><span data-fr=\"$descFr\" data-en=\"$descEn\">$descFr</span><br><br>";
 					}
 				}
 			?>

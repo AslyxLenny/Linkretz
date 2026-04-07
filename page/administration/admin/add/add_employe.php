@@ -13,7 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "Aucune donnée n'a été soumise";
     } else {
 
-        extract($_POST);
+        $nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+        $prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : '';
+        $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+        $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : '';
+        $fonction = isset($_POST['fonction']) ? $_POST['fonction'] : '0';
+        $profil = isset($_POST['profil']) ? $_POST['profil'] : '0';
         
         // Déclaration de la constante
         $regexTelephone = "/^\+[0-9]{1,4}[0-9]{4,14}$/";
@@ -90,11 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $msg = "Les caractéristiques de l'employé ont bien été enregistrées. ";
 
                 // Paramètres SMTP
-                $host = 'mail.stsjr.fr';
-                $port = 465;
-                $username = 'lenny.viator@stsjr.fr';
-                $password = 'Pmloikju00&';
-                $encryption = 'ssl';
+                $host = $_ENV['SMTP_HOST'];
+                $port = $_ENV['SMTP_PORT'];
+                $username = $_ENV['SMTP_USER'];
+                $password = $_ENV['SMTP_PASS'];
+                $encryption = $_ENV['SMTP_ENCRYPTION'];
 
                 // Destinataire et message
                 $to= $email;
@@ -108,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Votre mot de passe est temporaire est ' . $mot_de_passe_en_clair . ', vous devrez le modifier à votre première connexion.</p>
                 <p>Veuillez vous rendre sur : </p>
                 <p>
-                <a href="https://g8.stsjr.fr/viator/linkretz/page/connexion.php">Linkretz - Connexion</a>
+                <a href="' . $_ENV['APP_URL'] . '/page/connexion.php">Linkretz - Connexion</a>
                 </p>
                 ';
                 $mail = new PHPMailer(true);
@@ -124,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->Port       = $port;
 
                     // Expéditeur et destinataire
-                    $mail->setFrom('lenny.viator@stsjr.fr', 'Linkretz');
+                    $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
                     $mail->addAddress($to);
 
                     // Contenu
@@ -185,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				</form>
 				<div id="message">
 				<?php 
-					if (isset($msg)) echo $msg; 
+					if (isset($msg)) echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); 
 				?>
 				</div>
 			</div>

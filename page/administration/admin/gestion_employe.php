@@ -22,7 +22,7 @@ $fonction = $_SESSION['fonction'];
 		?>
         <section class="bleu">
 			<h2>Gestion des employés.<br>
-            <?php echo ("Personne connectée : " . $prenom_nom . " (" . $fonction .")"); ?> </h2>
+            <?php echo ("Personne connectée : " . htmlspecialchars($prenom_nom, ENT_QUOTES, 'UTF-8') . " (" . htmlspecialchars($fonction, ENT_QUOTES, 'UTF-8') .")"); ?> </h2>
 			<div class="button-container">
                 <a href='./add/add_employe.php'>
                     <input type='button' name='AddEmp' value='Ajouter un employé'/>
@@ -53,13 +53,13 @@ $fonction = $_SESSION['fonction'];
                             <th>Supprimer</th>
                             </tr>";
                         foreach ($lesEnregs as $enreg) {
-                            $libFr = htmlspecialchars($enreg->libelle);
-                            $libEn = htmlspecialchars($enreg->libelle_en);
+                            $libFr = htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8');
+                            $libEn = htmlspecialchars($enreg->libelle_en, ENT_QUOTES, 'UTF-8');
                             echo "
-                            <tr><td>$enreg->nom</td> <td>$enreg->prenom</td> <td data-fr=\"$libFr\" data-en=\"$libEn\">$enreg->libelle</td> 
-                            <td>$enreg->telephone</td> 
-                            <td><a href='./edit/edit_employe.php?id=$enreg->id' class='edit'><input type='button' name='EditEmp' value='Modifier'/></a></td> 
-                            <td><a href='./delete/delete_employe.php?id=$enreg->id' class='del'><input type='button' name='SupprEmp' value='Supprimer'/></a></td> </tr>";
+                            <tr><td>" . htmlspecialchars($enreg->nom, ENT_QUOTES, 'UTF-8') . "</td> <td>" . htmlspecialchars($enreg->prenom, ENT_QUOTES, 'UTF-8') . "</td> <td data-fr=\"$libFr\" data-en=\"$libEn\">" . htmlspecialchars($enreg->libelle, ENT_QUOTES, 'UTF-8') . "</td> 
+                            <td>" . htmlspecialchars($enreg->telephone, ENT_QUOTES, 'UTF-8') . "</td> 
+                            <td><a href='./edit/edit_employe.php?id=" . intval($enreg->id) . "' class='edit'><input type='button' name='EditEmp' value='Modifier'/></a></td> 
+                            <td><a href='./delete/delete_employe.php?id=" . intval($enreg->id) . "' class='del'><input type='button' name='SupprEmp' value='Supprimer'/></a></td> </tr>";
                         }
                         echo"</table>";
                     }
