@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : '';
         $email = isset($_POST['email']) ? trim($_POST['email']) : '';
         $telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : '';
-        $fonction = isset($_POST['fonction']) ? $_POST['fonction'] : '0';
+        $fonction = isset($_POST['fonction']) ? intval($_POST['fonction']) : 0;
         $profil = isset($_POST['profil']) ? $_POST['profil'] : '0';
         
         // Déclaration de la constante
@@ -48,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $msg .= "Le numéro de téléphone doit être au format international sans espace.<br>";
         }
 
-        if ($fonction == '0') {
+        if ($fonction === 0) {
             $msg = $msg . "La selection d'une fonction est obligatoire.<br>"; 
         }
 
-        if ($profil == '0') {
+        if (!in_array($profil, ['A', 'E'])) {
             $msg = $msg . "Le selection du profil est obligatoire.<br>"; 
         }
 
