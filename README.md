@@ -242,7 +242,7 @@ Linkretz/
 
 ## 👥 Contributeurs
 
-- **Lenny Viator** — Développeur
+- **Lenny Viator** — Développeur Étudiant
 
 &nbsp;
 
@@ -251,11 +251,3 @@ Linkretz/
 <p align="center">
   <sub>Dernière mise à jour : 2025 · Version : 1.0 · PHP 8</sub>
 </p>
-- Requêtes préparées (PDO) contre les injections SQL
-- Variables d'environnement (`.env`) pour les secrets
-- Cookies de session sécurisés (`httponly`, `secure`, `samesite`)
-- Régénération de session après connexion
-
-## Auteur
-
-**Lenny Viator** — BTS SIO — 1ère année
